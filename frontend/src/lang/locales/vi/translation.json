@@ -1,0 +1,20 @@
+{
+  "text": {
+    "username": "Tên đăng nhập",
+    "password": "Mật khẩu",
+    "confirm-password": "xác nhận mật khẩu",
+    "fullname": "Họ và tên",
+    "email": "Email",
+    "gender": "Giới tính",
+    "have-account": "Đã có tài khoản?",
+    "no-account": "Chưa có tài khoản?"
+  },
+  "button": {
+    "login": "Đăng Nhập",
+    "register": "Đăng Ký"
+  },
+  "link": {
+    "register": "Đăng ký",
+    "login": "Đăng nhập"
+  }
+}

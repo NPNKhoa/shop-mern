@@ -1,0 +1,20 @@
+{
+  "text": {
+    "username": "Username",
+    "password": "Password",
+    "confirm-password": "Confirm Password",
+    "fullname": "Fullname",
+    "email": "Email",
+    "gender": "Gender",
+    "have-account": "Already have account?",
+    "no-account": "Need an account?"
+  },
+  "button": {
+    "login": "Login",
+    "register": "Register"
+  },
+  "link": {
+    "register": "Register here",
+    "login": "Login here"
+  }
+}
