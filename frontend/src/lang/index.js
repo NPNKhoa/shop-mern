@@ -6,16 +6,16 @@ import translationVI from './locales/vi/translation.json';
 
 const resources = {
   en: {
-    translationEN,
+    translation: translationEN,
   },
   vi: {
-    translationVI,
+    translation: translationVI,
   },
 };
 
 i18n.use(initReactI18next).init({
   resources,
-  fallBackLng: 'vi',
+  fallbackLng: 'vi',
   interpolation: {
     escapeValue: false,
   },

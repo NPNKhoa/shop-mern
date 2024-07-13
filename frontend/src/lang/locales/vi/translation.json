@@ -7,7 +7,8 @@
     "email": "Email",
     "gender": "Giới tính",
     "have-account": "Đã có tài khoản?",
-    "no-account": "Chưa có tài khoản?"
+    "no-account": "Chưa có tài khoản?",
+    "search": "Tìm kiếm..."
   },
   "button": {
     "login": "Đăng Nhập",

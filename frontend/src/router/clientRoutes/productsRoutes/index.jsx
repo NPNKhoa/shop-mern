@@ -1,12 +1,12 @@
 import { v4 as uuidv4 } from 'uuid';
 import { ProductPage } from '../../../pages';
 
-const productRoutes = [
+const productsRoutes = [
   {
-    id: `product-${uuidv4()}`,
-    path: '/products',
+    id: `products-${uuidv4()}`,
+    path: '/products/:id',
     element: <ProductPage />,
   },
 ];
 
-export default productRoutes;
+export default productsRoutes;

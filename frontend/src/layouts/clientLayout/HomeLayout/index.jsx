@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
-import Header from '../../../components/Header';
+import { Header } from '../../../components';
 
 const HomeLayout = ({ children }) => {
   return (
-    <div>
+    <div className='bg-slate-100'>
       <Header />
       {children}
     </div>
