@@ -4,7 +4,7 @@ import Product from '../models/product.model.js';
 
 const getAllProducts = async (req, res) => {
   try {
-    const { name, category } = req.query;
+    const { name, category, page = 1, limit = 10 } = req.query;
 
     let query = {};
 
@@ -16,7 +16,9 @@ const getAllProducts = async (req, res) => {
       query.category = category;
     }
 
-    const products = await Product.find(query);
+    const products = await Product.find(query)
+      .skip((page - 1) * limit)
+      .limit(parseInt(limit));
 
     if (!products || products.length === 0) {
       return res.status(404).json({
@@ -24,9 +26,16 @@ const getAllProducts = async (req, res) => {
       });
     }
 
+    const totalProducts = await Product.countDocuments(products);
+    const totalPages = Math.ceil(totalProducts / limit);
+
     res.status(200).json({
       data: products,
       error: false,
+      meta: {
+        totalDocs: totalProducts,
+        totalPages,
+      },
     });
   } catch (error) {
     logError(error, res);

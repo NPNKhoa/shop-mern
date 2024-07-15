@@ -24,14 +24,6 @@ const UserSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
-    access_token: {
-      type: String,
-      required: true,
-    },
-    refresh_token: {
-      type: String,
-      required: true,
-    },
   },
   {
     timestamps: true,
