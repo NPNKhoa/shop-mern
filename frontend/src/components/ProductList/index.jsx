@@ -1,4 +1,4 @@
-import { Product } from '../../pages/clientPages/HomePage/components';
+import Product from '../Product';
 
 const ProductList = () => {
   return (

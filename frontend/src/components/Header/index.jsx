@@ -54,7 +54,7 @@ const Header = () => {
         <Button
           variant='contained'
           onClick={handleClickLogin}>
-          {t('button.login')}
+          <Link to={'/login'}>{t('button.login')}</Link>
         </Button>
         <IconButton onClick={handleClickCart}>
           <Badge

@@ -1,6 +1,11 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { homeRoutes, authRoutes, productTypesRoutes } from '../../router';
-import { HomeLayout } from '../../layouts';
+import {
+  homeRoutes,
+  authRoutes,
+  productTypesRoutes,
+  productsRoutes,
+} from '../../router';
+import { AuthLayout, HomeLayout, ProductLayout } from '../../layouts';
 import NotFoundPage from '../../pages/NotFoundPage';
 import ProductTypeLayout from '../../layouts/clientLayout/ProductTypeLayout';
 
@@ -19,7 +24,7 @@ const Router = () => {
           <Route
             key={id}
             path={path}
-            element={<HomeLayout>{element}</HomeLayout>}
+            element={<AuthLayout>{element}</AuthLayout>}
           />
         ))}
         {productTypesRoutes.map(({ id, path, element }) => (
@@ -27,6 +32,12 @@ const Router = () => {
             key={id}
             path={path}
             element={<ProductTypeLayout>{element}</ProductTypeLayout>}></Route>
+        ))}
+        {productsRoutes.map(({ id, path, element }) => (
+          <Route
+            key={id}
+            path={path}
+            element={<ProductLayout>{element}</ProductLayout>}></Route>
         ))}
 
         <Route

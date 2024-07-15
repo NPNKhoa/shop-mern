@@ -14,7 +14,7 @@ const HomePage = () => {
         <ProductList />
         <Button
           variant='outlined'
-          className='w-fit'>
+          className='w-1/6'>
           {t('button.see-more')}
         </Button>
       </div>

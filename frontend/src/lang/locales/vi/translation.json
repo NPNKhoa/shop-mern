@@ -2,20 +2,24 @@
   "text": {
     "username": "Tên đăng nhập",
     "password": "Mật khẩu",
-    "confirm-password": "xác nhận mật khẩu",
+    "confirm-password": "Xác nhận mật khẩu",
     "fullname": "Họ và tên",
     "email": "Email",
     "gender": "Giới tính",
     "have-account": "Đã có tài khoản?",
     "no-account": "Chưa có tài khoản?",
-    "search": "Tìm kiếm..."
+    "search": "Tìm kiếm...",
+    "hello": "Xin chào,",
+    "login-subtitle": "Đăng nhập hoặc tạo tài khoản"
   },
   "button": {
     "login": "Đăng Nhập",
-    "register": "Đăng Ký"
+    "register": "Đăng Ký",
+    "see-more": "Xem thêm"
   },
   "link": {
-    "register": "Đăng ký",
-    "login": "Đăng nhập"
+    "create-account": "Tạo tài khoản",
+    "login": "Đăng nhập",
+    "forgot-password": "Quên mật khẩu?"
   }
 }

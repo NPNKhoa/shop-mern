@@ -9,7 +9,7 @@ const authRoutes = [
   },
   {
     id: `auth-${uuidv4()}`,
-    path: '/singup',
+    path: '/signup',
     element: <SignUpPage />,
   },
 ];

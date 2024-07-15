@@ -8,14 +8,18 @@
     "gender": "Gender",
     "have-account": "Already have account?",
     "no-account": "Need an account?",
-    "search": "Search..."
+    "search": "Search...",
+    "hello": "Hello,",
+    "login-subtitle": "Login or Create an account"
   },
   "button": {
     "login": "Login",
-    "register": "Register"
+    "register": "Register",
+    "see-more": "See more"
   },
   "link": {
-    "register": "Register here",
-    "login": "Login here"
+    "create-account": "Create an account",
+    "login": "Login",
+    "forgot-password": "Forgot password?"
   }
 }

@@ -4,7 +4,7 @@ import { ProductPage } from '../../../pages';
 const productsRoutes = [
   {
     id: `products-${uuidv4()}`,
-    path: '/products/:id',
+    path: '/product/:id',
     element: <ProductPage />,
   },
 ];
