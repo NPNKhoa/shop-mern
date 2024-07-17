@@ -10,16 +10,50 @@
     "no-account": "Need an account?",
     "search": "Search...",
     "hello": "Hello,",
-    "login-subtitle": "Login or Create an account"
+    "login-subtitle": "Login or Create an account",
+    "women-popular": "Popular in women",
+    "new-collections": "New collections",
+    "give-email": "Submit your email to get your offers...",
+    "showing": "Showing",
+    "of": "of",
+    "products": "products",
+    "filters": "Filters",
+    "home": "Home",
+    "select-size": "Select Size:",
+    "quantity": "Quantity",
+    "category": "Category",
+    "product-description": "Product Description",
+    "cart": "Cart",
+    "view": "View",
+    "delete": "Delete",
+    "actions": "Actions",
+    "product": "Product",
+    "product-name": "Product Name",
+    "price": "Price",
+    "total": "Total",
+    "cart-total": "Cart Total",
+    "subtotal": "Subtotal",
+    "shipping-fee": "Shipping Fee",
+    "free": "Free",
+    "enter-promotion-title": "If you have a promo code, enter it here!",
+    "promotion-code": "Promotion code",
+    "confirm": "Confirm"
   },
   "button": {
     "login": "Login",
     "register": "Register",
-    "see-more": "See more"
+    "see-more": "See more",
+    "check-out": "Check out!",
+    "add-to-cart": "Add to Cart"
   },
   "link": {
     "create-account": "Create an account",
     "login": "Login",
     "forgot-password": "Forgot password?"
+  },
+  "banner": {
+    "new-arrivals": "New arrivals only",
+    "new-collections": "New 🎉 collections for everyone",
+    "exclusive": "Exclusive Offers For You ❤️"
   }
 }

@@ -4,6 +4,8 @@ import OrderPage from './clientPages/OrderPage/index.jsx';
 import LoginPage from './clientPages/LoginPage/index.jsx';
 import SignUpPage from './clientPages/SignUpPage/index.jsx';
 import ProductTypePage from './clientPages/ProductTypePage/index.jsx';
+import CartPage from './clientPages/CartPage/index.jsx';
+import LoadingPage from './LoadingPage/index.jsx';
 
 export {
   HomePage,
@@ -12,4 +14,6 @@ export {
   LoginPage,
   SignUpPage,
   ProductTypePage,
+  CartPage,
+  LoadingPage,
 };

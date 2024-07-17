@@ -1,10 +1,12 @@
 import PropTypes from 'prop-types';
+import { Footer, Header } from '../../../components';
 
 const ProductLayout = ({ children }) => {
   return (
-    <div>
-      <h1>Product Detail Layout</h1>
+    <div className='bg-slate-100'>
+      <Header />
       {children}
+      <Footer />
     </div>
   );
 };

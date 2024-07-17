@@ -1,65 +1,44 @@
 import Button from '@mui/material/Button';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import {
-  Badge,
-  FormControl,
-  IconButton,
-  InputAdornment,
-  OutlinedInput,
-} from '@mui/material';
-import SearchIcon from '@mui/icons-material/Search';
+import { Badge, IconButton } from '@mui/material';
 import { useTranslation } from 'react-i18next';
-import { useState } from 'react';
 import LanguageSelector from '../LanguageSelector';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import NavBar from '../NavBar';
 
 const Header = () => {
   const { t } = useTranslation();
-
-  const [search, setSearch] = useState('');
-
-  const handleChangeSearch = (e) => {
-    setSearch(e.target.value);
-  };
+  const navigate = useNavigate();
 
   const handleClickLogin = () => {
     console.log('clicked login button');
   };
 
   const handleClickCart = () => {
-    console.log('clicked cart button');
+    navigate('/cart');
   };
 
   return (
-    <div className='w-full flex justify-between items-center bg-blue-100 px-7 py-3'>
-      <h1
-        id='logo'
-        className='text-blue-600'>
+    <div className='w-full flex justify-between items-center bg-white px-7 py-3 sticky top-0 z-50'>
+      <h1 className='text-blue-600 logo text-4xl'>
         <Link to={'/'}>SHOPMERN</Link>
       </h1>
-      <FormControl sx={{ m: 1, width: '50%' }}>
-        <OutlinedInput
-          id='header-search-bar'
-          placeholder={t('text.search')}
-          value={search}
-          onChange={(e) => handleChangeSearch(e)}
-          startAdornment={
-            <InputAdornment position='start'>
-              <SearchIcon />
-            </InputAdornment>
-          }
-        />
-      </FormControl>
-      <div className='w-fit flex justify-center items-center gap-3'>
-        <Button
-          variant='contained'
-          onClick={handleClickLogin}>
-          <Link to={'/login'}>{t('button.login')}</Link>
-        </Button>
+      <NavBar />
+      <div className='w-fit flex justify-center items-center gap-5'>
+        <Link
+          to={'/login'}
+          className='w-32'>
+          <Button
+            variant='contained'
+            className='w-full'
+            onClick={handleClickLogin}>
+            {t('button.login')}
+          </Button>
+        </Link>
         <IconButton onClick={handleClickCart}>
           <Badge
             badgeContent={3}
-            color='primary'>
+            color='error'>
             <ShoppingCartIcon />
           </Badge>
         </IconButton>

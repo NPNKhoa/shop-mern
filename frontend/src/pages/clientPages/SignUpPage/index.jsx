@@ -68,7 +68,10 @@ const SignUpPage = () => {
         variant='middle'
         flexItem
       />
-      <div className='w-1/3'>
+      <div className='w-1/3 flex flex-col justify-center items-center gap-3'>
+        <h1 className='text-blue-600 logo text-2xl'>
+          <Link to={'/'}>SHOPMERN</Link>
+        </h1>
         <img
           src='/images/logo-login.png'
           alt='logo-login'

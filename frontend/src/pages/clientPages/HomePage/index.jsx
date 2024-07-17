@@ -1,6 +1,9 @@
-import { Button } from '@mui/material';
-import { Carousel, ProductList } from '../../../components';
-import { ProductType } from './components';
+import {
+  HeroBanner,
+  ExclusiveBanner,
+  ProductList,
+  Footer,
+} from '../../../components';
 import { useTranslation } from 'react-i18next';
 
 const HomePage = () => {
@@ -8,16 +11,23 @@ const HomePage = () => {
 
   return (
     <div>
-      <ProductType />
-      <Carousel />
-      <div className='flex flex-col justify-center items-center gap-6 my-2'>
+      <HeroBanner />
+      <div className='py-16'>
+        <h3 className='text-5xl mb-8 text-center uppercase font-medium'>
+          {t('text.women-popular')}
+          <hr className='w-1/6 m-auto mt-4 border-2 border-black rounded-full' />
+        </h3>
         <ProductList />
-        <Button
-          variant='outlined'
-          className='w-1/6'>
-          {t('button.see-more')}
-        </Button>
       </div>
+      <ExclusiveBanner />
+      <div className='py-16'>
+        <h3 className='text-5xl mb-8 text-center uppercase font-medium'>
+          {t('text.new-collections')}
+          <hr className='w-1/6 m-auto mt-4 border-2 border-black rounded-full' />
+        </h3>
+        <ProductList />
+      </div>
+      <Footer />
     </div>
   );
 };

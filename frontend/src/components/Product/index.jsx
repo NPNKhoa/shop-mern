@@ -3,9 +3,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
-import StarIcon from '@mui/icons-material/Star';
 import styled from 'styled-components';
-import { useTranslation } from 'react-i18next';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { Link } from 'react-router-dom';
 
@@ -17,11 +15,10 @@ const StyledCard = styled(Card)`
 `;
 
 const Product = () => {
-  const { t } = useTranslation();
   const product = {
     id: 123456,
     name: 'iPhone XS Max',
-    image: '/images/iphonexsm.webp',
+    image: '/images/product_13.png',
     description: 'iPhone XS Max 6GB/256GB',
     price: '10.000.000đ',
     discount: '5%',
@@ -30,10 +27,10 @@ const Product = () => {
   };
 
   return (
-    <Link
-      to={`/product/${product.id}`}
-      className='sm:w-2/5 md:w-1/6'>
-      <StyledCard className='w-full'>
+    <StyledCard className='sm:w-2/5 md:w-1/5'>
+      <Link
+        to={`/product/${product.id}`}
+        className='w-full'>
         <CardActionArea>
           <CardMedia
             component='img'
@@ -43,26 +40,14 @@ const Product = () => {
           />
 
           <CardContent sx={{ padding: '12px' }}>
-            <Typography
-              gutterBottom
-              variant='h5'
-              component='div'>
-              {product.name}
-            </Typography>
-            <div className='flex items-center gap-2 text-gray-600'>
-              <span className='flex items-center'>
-                <span>{product.rate}</span>
-                <StarIcon sx={{ color: 'yellow' }} />
-              </span>
-              |<span>{t('text.sold') + ' ' + product.sold}</span>
-            </div>
-            <Typography
-              variant='h6'
-              color='red'
-              className='flex justify-between items-center'>
+            <h3 className='font-bold text-2xl'>{product.name}</h3>
+
+            <div className='flex justify-between items-center font-semibold text-xl'>
               <span>{product.price}</span>
-              <span className='text-base'>-{product.discount}</span>
-            </Typography>
+            </div>
+            <div className='flex justify-between items-center line-through text-slate-600 font-thin'>
+              <span>{product.price}</span>
+            </div>
             <Typography
               variant='body2'
               color='text.secondary'>
@@ -70,14 +55,14 @@ const Product = () => {
             </Typography>
           </CardContent>
         </CardActionArea>
+      </Link>
 
-        <CardActions sx={{ padding: '0' }}>
-          <IconButton>
-            <AddShoppingCartIcon />
-          </IconButton>
-        </CardActions>
-      </StyledCard>
-    </Link>
+      <CardActions sx={{ padding: '0' }}>
+        <IconButton>
+          <AddShoppingCartIcon />
+        </IconButton>
+      </CardActions>
+    </StyledCard>
   );
 };
 

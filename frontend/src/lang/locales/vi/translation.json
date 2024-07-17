@@ -10,16 +10,50 @@
     "no-account": "Chưa có tài khoản?",
     "search": "Tìm kiếm...",
     "hello": "Xin chào,",
-    "login-subtitle": "Đăng nhập hoặc tạo tài khoản"
+    "login-subtitle": "Đăng nhập hoặc tạo tài khoản",
+    "women-popular": "Sản phẩm cho nữ phổ biến",
+    "new-collections": "Bộ sưu tập mới",
+    "give-email": "Điền email và nhận ưu đãi ngay...",
+    "showing": "Hiển thị",
+    "of": "trên",
+    "products": "sản phẩm",
+    "filters": "Bộ lọc",
+    "home": "Trang chủ",
+    "select-size": "Chọn Kích Thước:",
+    "quantity": "Số lượng",
+    "category": "Loại",
+    "product-description": "Chi tiết sản phẩm",
+    "cart": "Giỏ hàng",
+    "view": "Xem",
+    "delete": "Xóa",
+    "actions": "Thao tác",
+    "product": "Sản phẩm",
+    "product-name": "Tên sản phẩm",
+    "price": "Đơn giá",
+    "total": "Tổng tiền",
+    "cart-total": "Tổng giỏ hàng",
+    "subtotal": "Tổng tiền hàng",
+    "shipping-fee": "Phí giao hàng",
+    "free": "Miễn phí",
+    "enter-promotion-title": "Nhập mã khuyến mãi tại đây!",
+    "promotion-code": "Mã khuyến mãi",
+    "confirm": "Xác nhận"
   },
   "button": {
     "login": "Đăng Nhập",
     "register": "Đăng Ký",
-    "see-more": "Xem thêm"
+    "see-more": "Xem thêm",
+    "check-out": "Xem ngay!",
+    "add-to-cart": "Thêm vào giỏ hàng"
   },
   "link": {
     "create-account": "Tạo tài khoản",
     "login": "Đăng nhập",
     "forgot-password": "Quên mật khẩu?"
+  },
+  "banner": {
+    "new-arrivals": "Dành cho người mới",
+    "new-collections": "Bộ sưu tập mới dành cho tất cả mọi người",
+    "exclusive": "Ưu đãi độc quyền dành cho bạn ❤️"
   }
 }
