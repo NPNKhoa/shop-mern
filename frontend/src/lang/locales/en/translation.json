@@ -51,7 +51,11 @@
     "order-detail": "Order detail",
     "order-total": "Order Total",
     "address": "Address",
-    "delivery-method": "Delivery method"
+    "payment-method": "Payment method",
+    "items-total": "Items total",
+    "receiving-infor": "Receiving information",
+    "note": "Note",
+    "order-overview": "Order overview"
   },
   "button": {
     "login": "Login",
@@ -59,7 +63,9 @@
     "see-more": "See more",
     "check-out": "Check out!",
     "add-to-cart": "Add to Cart",
-    "back": "Back"
+    "back": "Back",
+    "checkout": "Checkout",
+    "order": "Order"
   },
   "link": {
     "create-account": "Create an account",

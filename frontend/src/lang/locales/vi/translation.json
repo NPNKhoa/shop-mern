@@ -51,7 +51,11 @@
     "order-detail": "Chi tiết đơn hàng",
     "order-total": "Tổng đơn hàng",
     "address": "Địa chỉ",
-    "delivery-method": "Phương thức vận chuyển"
+    "payment-method": "Phương thức thanh toán",
+    "items-total": "Tổng sản phẩm",
+    "receiving-infor": "Thông tin nhận hàng",
+    "note": "Ghi chú",
+    "order-overview": "Tổng quan đơn hàng"
   },
   "button": {
     "login": "Đăng Nhập",
@@ -59,7 +63,9 @@
     "see-more": "Xem thêm",
     "check-out": "Xem ngay!",
     "add-to-cart": "Thêm vào giỏ hàng",
-    "back": "Trở về"
+    "back": "Trở về",
+    "checkout": "Thanh toán",
+    "order": "Đặt hàng"
   },
   "link": {
     "create-account": "Tạo tài khoản",

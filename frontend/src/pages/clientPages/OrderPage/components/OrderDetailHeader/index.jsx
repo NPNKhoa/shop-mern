@@ -27,7 +27,7 @@ const OrderDetailHeader = ({ orderId }) => {
         </div>
 
         <div className='text-sm text-gray-600'>
-          {t('text.delivery-method')}{' '}
+          {t('text.payment-method')}{' '}
           <span className='font-semibold text-lg'>COD</span>
         </div>
       </div>

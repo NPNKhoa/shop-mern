@@ -2,6 +2,8 @@ import { useTranslation } from 'react-i18next';
 import DataTable from '../../../components/DataTable';
 import CartTotal from './components/CartTotal';
 import PromotionInput from './components/PromotionInput';
+import Button from '@mui/material/Button';
+import { Link } from 'react-router-dom';
 
 const data = [
   {
@@ -94,7 +96,19 @@ const CartPage = () => {
       />
       <div className='flex items-start justify-start gap-40 py-20'>
         <CartTotal className='w-1/2' />
-        <PromotionInput />
+        <div className='flex flex-col justify-between items-center gap-20'>
+          <PromotionInput />
+          <Link
+            to={'/cart/checkout'}
+            className='w-full'>
+            <Button
+              className='w-full'
+              variant='contained'
+              size='large'>
+              {t('button.checkout')}
+            </Button>
+          </Link>
+        </div>
       </div>
     </div>
   );
