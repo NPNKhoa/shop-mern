@@ -10,12 +10,16 @@ import {
   AuthLayout,
   CartLayout,
   HomeLayout,
+  OrderLayout,
   ProductLayout,
+  UserLayout,
 } from '../../layouts';
 import NotFoundPage from '../../pages/NotFoundPage';
 import ProductTypeLayout from '../../layouts/clientLayout/ProductTypeLayout';
 import { Suspense } from 'react';
 import { LoadingPage } from '../../pages';
+import userRoutes from '../../router/clientRoutes/userRoutes';
+import orderRoutes from '../../router/clientRoutes/orderRoutes';
 
 const Router = () => {
   return (
@@ -55,6 +59,20 @@ const Router = () => {
               key={id}
               path={path}
               element={<CartLayout>{element}</CartLayout>}></Route>
+          ))}
+          {userRoutes.map(({ id, path, element }) => (
+            <Route
+              key={id}
+              path={path}
+              element={<UserLayout>{element}</UserLayout>}
+            />
+          ))}
+          {orderRoutes.map(({ id, path, element }) => (
+            <Route
+              key={id}
+              path={path}
+              element={<OrderLayout>{element}</OrderLayout>}
+            />
           ))}
 
           <Route

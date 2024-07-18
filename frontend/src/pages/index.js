@@ -6,6 +6,7 @@ import SignUpPage from './clientPages/SignUpPage/index.jsx';
 import ProductTypePage from './clientPages/ProductTypePage/index.jsx';
 import CartPage from './clientPages/CartPage/index.jsx';
 import LoadingPage from './LoadingPage/index.jsx';
+import UserPage from './clientPages/UserPage/index.jsx';
 
 export {
   HomePage,
@@ -16,4 +17,5 @@ export {
   ProductTypePage,
   CartPage,
   LoadingPage,
+  UserPage,
 };

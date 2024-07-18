@@ -4,7 +4,7 @@ import { OrderPage } from '../../../pages';
 const orderRoutes = [
   {
     id: `order-${uuidv4()}`,
-    path: '/orders',
+    path: '/order/:orderId',
     element: <OrderPage />,
   },
 ];

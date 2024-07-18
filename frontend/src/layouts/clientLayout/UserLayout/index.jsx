@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { Footer, Header } from '../../../components';
 
-const OrderLayout = ({ children }) => {
+const UserLayout = ({ children }) => {
   return (
     <div>
       <Header />
@@ -11,8 +11,8 @@ const OrderLayout = ({ children }) => {
   );
 };
 
-OrderLayout.propTypes = {
+UserLayout.propTypes = {
   children: PropTypes.any,
 };
 
-export default OrderLayout;
+export default UserLayout;

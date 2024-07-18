@@ -37,14 +37,29 @@
     "free": "Miễn phí",
     "enter-promotion-title": "Nhập mã khuyến mãi tại đây!",
     "promotion-code": "Mã khuyến mãi",
-    "confirm": "Xác nhận"
+    "confirm": "Xác nhận",
+    "user-infor": "Thông tin người dùng",
+    "infor-of": "Thông tin của",
+    "order-history": "Lịch sử mua hàng",
+    "phone": "Số điện thoại",
+    "purchased": "Đơn đã mua",
+    "order-code": "Mã đơn hàng",
+    "total-price": "Tổng tiền",
+    "order-date": "Ngày đặt hàng",
+    "see-detail": "Xem chi tiết",
+    "page-not-found": "Không tìm thấy trang",
+    "order-detail": "Chi tiết đơn hàng",
+    "order-total": "Tổng đơn hàng",
+    "address": "Địa chỉ",
+    "delivery-method": "Phương thức vận chuyển"
   },
   "button": {
     "login": "Đăng Nhập",
     "register": "Đăng Ký",
     "see-more": "Xem thêm",
     "check-out": "Xem ngay!",
-    "add-to-cart": "Thêm vào giỏ hàng"
+    "add-to-cart": "Thêm vào giỏ hàng",
+    "back": "Trở về"
   },
   "link": {
     "create-account": "Tạo tài khoản",

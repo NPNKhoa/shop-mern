@@ -37,14 +37,29 @@
     "free": "Free",
     "enter-promotion-title": "If you have a promo code, enter it here!",
     "promotion-code": "Promotion code",
-    "confirm": "Confirm"
+    "confirm": "Confirm",
+    "user-infor": "User Information",
+    "infor-of": "Information of user",
+    "order-history": "Orders history",
+    "phone": "Phone",
+    "purchased": "Purchased",
+    "order-code": "Order code",
+    "total-price": "Total Price",
+    "order-date": "Order date",
+    "see-detail": "See detail",
+    "page-not-found": "Page not found",
+    "order-detail": "Order detail",
+    "order-total": "Order Total",
+    "address": "Address",
+    "delivery-method": "Delivery method"
   },
   "button": {
     "login": "Login",
     "register": "Register",
     "see-more": "See more",
     "check-out": "Check out!",
-    "add-to-cart": "Add to Cart"
+    "add-to-cart": "Add to Cart",
+    "back": "Back"
   },
   "link": {
     "create-account": "Create an account",
