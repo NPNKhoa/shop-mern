@@ -5,12 +5,13 @@ import { I18nextProvider } from 'react-i18next';
 import i18n from './lang/index.js';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import { AuthContextProvider } from './context/AuthContext.jsx';
+import { Provider } from 'react-redux';
+import store from './redux/store.js';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <I18nextProvider i18n={i18n}>
-    <AuthContextProvider>
+    <Provider store={store}>
       <App />
-    </AuthContextProvider>
+    </Provider>
   </I18nextProvider>
 );
