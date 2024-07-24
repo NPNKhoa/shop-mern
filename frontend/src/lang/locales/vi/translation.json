@@ -59,6 +59,7 @@
   },
   "button": {
     "login": "Đăng Nhập",
+    "logout": "Đăng xuất",
     "register": "Đăng Ký",
     "see-more": "Xem thêm",
     "check-out": "Xem ngay!",

@@ -1,13 +1,28 @@
-import { Button, Divider, TextField } from '@mui/material';
+import { Button, CircularProgress, Divider, TextField } from '@mui/material';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { login } from '../../../redux/thunks/authThunk';
 
 const LoginPage = () => {
   const { t } = useTranslation();
 
-  const [username, setUsername] = useState('');
+  const dispatch = useDispatch();
+
+  const loading = useSelector((state) => state.auth.loading);
+  const error = useSelector((state) => state.auth.error);
+
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const handleLogin = async () => {
+    await dispatch(login({ email, password }));
+    if (error) {
+      alert(error);
+    }
+    window.location.reload();
+  };
 
   return (
     <div className='w-2/3 flex justify-around items-center p-6 bg-blue-50 rounded-lg'>
@@ -16,15 +31,14 @@ const LoginPage = () => {
           <h3 className='uppercase text-2xl font-medium'>{t('text.hello')}</h3>
           <p>{t('text.login-subtitle')}</p>
         </div>
-
         <TextField
           required
-          id='username'
+          id='email'
           className='w-full'
-          label={t('text.username')}
+          label={t('text.email')}
           size='small'
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
         />
         <TextField
           required
@@ -39,8 +53,16 @@ const LoginPage = () => {
 
         <Button
           variant='contained'
-          className='w-full'>
-          {t('button.login')}
+          className='w-full'
+          onClick={() => handleLogin()}>
+          {loading ? (
+            <CircularProgress
+              size={'1.6rem'}
+              color='info'
+            />
+          ) : (
+            t('button.login')
+          )}
         </Button>
 
         <div className='w-full flex justify-between items-center'>

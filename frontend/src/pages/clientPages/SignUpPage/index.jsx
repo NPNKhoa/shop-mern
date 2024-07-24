@@ -1,14 +1,24 @@
 import { Button, Divider, TextField } from '@mui/material';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { signUp } from '../../../redux/thunks/authThunk';
 
 const SignUpPage = () => {
   const { t } = useTranslation();
 
-  const [username, setUsername] = useState('');
+  const dispatch = useDispatch();
+
+  const [name, setName] = useState('');
+  const [phone, setPhone] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+
+  const handleClickSignUp = () => {
+    dispatch(signUp({ name, email, password, confirmPassword, phone }));
+  };
 
   return (
     <div className='w-2/3 flex justify-around items-center p-6 bg-blue-50 rounded-lg'>
@@ -20,12 +30,27 @@ const SignUpPage = () => {
 
         <TextField
           required
-          id='username'
           className='w-full'
-          label={t('text.username')}
+          label={t('text.fullname')}
           size='small'
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+        <TextField
+          required
+          className='w-full'
+          label={t('text.phone')}
+          size='small'
+          value={phone}
+          onChange={(e) => setPhone(e.target.value)}
+        />
+        <TextField
+          required
+          className='w-full'
+          label={t('text.email')}
+          size='small'
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
         />
         <TextField
           required
@@ -50,7 +75,8 @@ const SignUpPage = () => {
 
         <Button
           variant='contained'
-          className='w-full'>
+          className='w-full'
+          onClick={() => handleClickSignUp()}>
           {t('button.register')}
         </Button>
 

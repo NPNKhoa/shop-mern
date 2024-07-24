@@ -59,6 +59,7 @@
   },
   "button": {
     "login": "Login",
+    "logout": "Logout",
     "register": "Register",
     "see-more": "See more",
     "check-out": "Check out!",

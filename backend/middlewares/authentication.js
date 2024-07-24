@@ -2,6 +2,7 @@ import jwt from 'jsonwebtoken';
 
 import logError from '../helpers/logError.js';
 import User from '../models/user.model.js';
+import { logout } from '../controllers/user.controller.js';
 
 const auth = (req, res, next) => {
   try {
@@ -15,6 +16,7 @@ const auth = (req, res, next) => {
 
     jwt.verify(token, process.env.SECRET, async (error, payload) => {
       if (error) {
+        logout();
         return res.status(401).json({
           error: 'Invalid Token!',
         });

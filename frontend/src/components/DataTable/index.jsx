@@ -129,7 +129,7 @@ const DataTable = ({
                 </TableCell>
               ))}
               {(actions.delete || actions.view) && (
-                <TableCell>
+                <TableCell align='center'>
                   <span className='font-semibold text-base'>
                     {t('text.actions')}
                   </span>
@@ -147,7 +147,7 @@ const DataTable = ({
                   <TableCell key={column.id}>{row[column.id]}</TableCell>
                 ))}
                 {(actions.delete || actions.view) && (
-                  <TableCell>
+                  <TableCell align='center'>
                     {actions.view && (
                       <Tooltip title={t('text.view')}>
                         <IconButton onClick={() => console.log('View', row)}>

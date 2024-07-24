@@ -90,7 +90,7 @@ const CartPage = () => {
         data={data}
         sortable={true}
         filterable={true}
-        actions={{ delete: true, view: true }}
+        actions={{ delete: true, view: false }}
         pagination={{ rowsPerPageOptions: [5, 10, 25], defaultRowsPerPage: 5 }}
         showIndex={true}
       />

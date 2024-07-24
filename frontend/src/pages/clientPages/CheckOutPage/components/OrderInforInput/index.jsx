@@ -43,12 +43,15 @@ const OrderInforInput = ({ ...props }) => {
         <FormControl
           required
           fullWidth>
-          <InputLabel id='payment-method-label'>
+          <InputLabel
+            id='payment-method-label'
+            size='small'>
             {t('text.payment-method')}
           </InputLabel>
           <Select
             labelId='payment-method-label'
             id='payment-method'
+            size='small'
             label={t('text.payment-method')}>
             <MenuItem value={10}>COD</MenuItem>
           </Select>
