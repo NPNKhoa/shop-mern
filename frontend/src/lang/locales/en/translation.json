@@ -55,7 +55,20 @@
     "items-total": "Items total",
     "receiving-infor": "Receiving information",
     "note": "Note",
-    "order-overview": "Order overview"
+    "order-overview": "Order overview",
+    "user": "User",
+    "order": "Order",
+    "admin-login": "Login with your admin account",
+    "products-management": "Product Management",
+    "users-management": "User Management",
+    "orders-management": "Order Management",
+    "product-code": "Product Code",
+    "image": "Image",
+    "original-price": "Original Price",
+    "saled-price": "Saled Price",
+    "available": "Available",
+    "add-products": "Add Product",
+    "add-users": "Add User"
   },
   "button": {
     "login": "Login",
@@ -66,7 +79,10 @@
     "add-to-cart": "Add to Cart",
     "back": "Back",
     "checkout": "Checkout",
-    "order": "Order"
+    "order": "Order",
+    "add": "Add",
+    "save": "Save",
+    "cancel": "Cancel"
   },
   "link": {
     "create-account": "Create an account",

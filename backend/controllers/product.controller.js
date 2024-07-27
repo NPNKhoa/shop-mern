@@ -45,7 +45,6 @@ const getAllProducts = async (req, res) => {
 const getProductById = async (req, res) => {
   try {
     const { id } = req.params;
-    console.log(id);
 
     if (!id) {
       return res.status(400).json({
@@ -78,8 +77,9 @@ const getProductById = async (req, res) => {
 
 const addProduct = async (req, res) => {
   try {
+    console.log(req.body);
     const { name, category, new_price, old_price, available } = req.body;
-    const image = req.file.path;
+    const image = req.file?.path;
 
     if (!name || !image || !category || !new_price || !old_price) {
       return res.status(400).json({
@@ -136,7 +136,8 @@ const deleteProduct = async (req, res) => {
     }
 
     res.status(200).json({
-      message: 'Delete product successfully',
+      data: deletedProduct,
+      message: 'Delete product successfully!',
       error: false,
     });
   } catch (error) {

@@ -55,7 +55,20 @@
     "items-total": "Tổng sản phẩm",
     "receiving-infor": "Thông tin nhận hàng",
     "note": "Ghi chú",
-    "order-overview": "Tổng quan đơn hàng"
+    "order-overview": "Tổng quan đơn hàng",
+    "user": "Người dùng",
+    "order": "Đơn hàng",
+    "admin-login": "Đăng nhập với tài khoản admin",
+    "products-management": "Quản lý sản phẩm",
+    "users-management": "Quản lý người dùng",
+    "orders-management": "Quản lý đơn hàng",
+    "product-code": "Mã sản phẩm",
+    "image": "Hình ảnh",
+    "original-price": "Giá gốc",
+    "saled-price": "Giá khuyến mãi",
+    "available": "Còn Hàng",
+    "add-products": "Thêm sản phẩm",
+    "add-users": "Thêm người dùng"
   },
   "button": {
     "login": "Đăng Nhập",
@@ -66,7 +79,10 @@
     "add-to-cart": "Thêm vào giỏ hàng",
     "back": "Trở về",
     "checkout": "Thanh toán",
-    "order": "Đặt hàng"
+    "order": "Đặt hàng",
+    "add": "Thêm",
+    "save": "Lưu",
+    "cancel": "Hủy"
   },
   "link": {
     "create-account": "Tạo tài khoản",

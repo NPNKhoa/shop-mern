@@ -8,6 +8,8 @@ import Footer from './Footer';
 import CustomBreadcrumbs from './CustomBreadcrumbs';
 import NumberInput from './NumberInput';
 import DataTable from './DataTable';
+import AdminSideBar from './AdminSideBar';
+import AdminHeader from './AdminHeader';
 
 export {
   Header,
@@ -20,4 +22,6 @@ export {
   CustomBreadcrumbs,
   NumberInput,
   DataTable,
+  AdminSideBar,
+  AdminHeader,
 };

@@ -15,7 +15,11 @@ const Footer = () => {
       <div>
         <span className='p-3 mx-4 hover:cursor-pointer'>Company</span>
         <span className='p-3 mx-4 hover:cursor-pointer'>Product</span>
-        <span className='p-3 mx-4 hover:cursor-pointer'>Offices</span>
+        <Link
+          to={'/admin/login'}
+          className='p-3 mx-4 text-xl font-semibold text-sky-800 hover:cursor-pointer hover:text-2xl'>
+          Admin
+        </Link>
         <span className='p-3 mx-4 hover:cursor-pointer'>About</span>
         <span className='p-3 mx-4 hover:cursor-pointer'>Contact</span>
       </div>

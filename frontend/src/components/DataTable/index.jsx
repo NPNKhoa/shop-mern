@@ -28,6 +28,8 @@ const DataTable = ({
   actions = { delete: false, view: false },
   pagination = { rowsPerPageOptions: [5, 10, 25], defaultRowsPerPage: 5 },
   showIndex = false,
+  onDelete,
+  onView,
 }) => {
   const { t } = useTranslation();
 
@@ -144,20 +146,30 @@ const DataTable = ({
                   <TableCell>{page * rowsPerPage + rowIndex + 1}</TableCell>
                 )}
                 {columns.map((column) => (
-                  <TableCell key={column.id}>{row[column.id]}</TableCell>
+                  <TableCell key={column.id}>
+                    {column.type === 'image' ? (
+                      <img
+                        src={`${import.meta.env.VITE_IMG_URL + row[column.id]}`}
+                        alt={column.label}
+                        style={{ width: '50px', height: '50px' }}
+                      />
+                    ) : (
+                      row[column.id]
+                    )}
+                  </TableCell>
                 ))}
                 {(actions.delete || actions.view) && (
                   <TableCell align='center'>
-                    {actions.view && (
+                    {actions.view && onView && (
                       <Tooltip title={t('text.view')}>
-                        <IconButton onClick={() => console.log('View', row)}>
+                        <IconButton onClick={() => onView(row)}>
                           <VisibilityIcon />
                         </IconButton>
                       </Tooltip>
                     )}
-                    {actions.delete && (
+                    {actions.delete && onDelete && (
                       <Tooltip title={t('text.delete')}>
-                        <IconButton onClick={() => console.log('Delete', row)}>
+                        <IconButton onClick={() => onDelete(row)}>
                           <DeleteIcon />
                         </IconButton>
                       </Tooltip>
@@ -188,6 +200,7 @@ DataTable.propTypes = {
     PropTypes.shape({
       id: PropTypes.string.isRequired,
       label: PropTypes.string.isRequired,
+      type: PropTypes.string,
     })
   ).isRequired,
   data: PropTypes.arrayOf(PropTypes.object).isRequired,
@@ -202,6 +215,8 @@ DataTable.propTypes = {
     defaultRowsPerPage: PropTypes.number,
   }),
   showIndex: PropTypes.bool,
+  onDelete: PropTypes.func,
+  onView: PropTypes.func,
 };
 
 export default DataTable;

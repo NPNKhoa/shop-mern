@@ -5,6 +5,8 @@ import {
   productTypesRoutes,
   productsRoutes,
   cartRoutes,
+  adminAuthRoutes,
+  adminHomeRoutes,
 } from '../../router';
 import {
   AuthLayout,
@@ -20,6 +22,7 @@ import { Suspense } from 'react';
 import { LoadingPage } from '../../pages';
 import userRoutes from '../../router/clientRoutes/userRoutes';
 import orderRoutes from '../../router/clientRoutes/orderRoutes';
+import { AdminAuthLayout, AdminHomeLayout } from '../../layouts/adminLayout';
 
 const Router = () => {
   return (
@@ -72,6 +75,21 @@ const Router = () => {
               key={id}
               path={path}
               element={<OrderLayout>{element}</OrderLayout>}
+            />
+          ))}
+
+          {adminAuthRoutes.map(({ id, path, element }) => (
+            <Route
+              key={id}
+              path={path}
+              element={<AdminAuthLayout>{element}</AdminAuthLayout>}
+            />
+          ))}
+          {adminHomeRoutes.map(({ id, path, element }) => (
+            <Route
+              key={id}
+              path={path}
+              element={<AdminHomeLayout>{element}</AdminHomeLayout>}
             />
           ))}
 

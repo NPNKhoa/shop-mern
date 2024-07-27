@@ -2,11 +2,12 @@ import { Button, CircularProgress, Divider, TextField } from '@mui/material';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { login } from '../../../redux/thunks/authThunk';
 
 const LoginPage = () => {
   const { t } = useTranslation();
+  const navigate = useNavigate(); // Chỉnh sửa lại logic login
 
   const dispatch = useDispatch();
 
@@ -21,7 +22,7 @@ const LoginPage = () => {
     if (error) {
       alert(error);
     }
-    window.location.reload();
+    navigate('/'); // Chỉnh sửa lại logic login
   };
 
   return (
