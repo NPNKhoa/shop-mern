@@ -58,11 +58,12 @@ const DataTable = ({
     setPage(0);
   };
 
-  const filteredData = data.filter((row) =>
-    Object.values(row).some((value) =>
-      String(value).toLowerCase().includes(filter.toLowerCase())
-    )
-  );
+  const filteredData =
+    data?.filter((row) =>
+      Object.values(row).some((value) =>
+        String(value).toLowerCase().includes(filter.toLowerCase())
+      )
+    ) || [];
 
   const sortedData = filteredData.sort((a, b) => {
     if (orderBy) {
@@ -140,44 +141,62 @@ const DataTable = ({
             </TableRow>
           </TableHead>
           <TableBody>
-            {paginatedData.map((row, rowIndex) => (
-              <TableRow key={rowIndex}>
-                {showIndex && (
-                  <TableCell>{page * rowsPerPage + rowIndex + 1}</TableCell>
-                )}
-                {columns.map((column) => (
-                  <TableCell key={column.id}>
-                    {column.type === 'image' ? (
-                      <img
-                        src={`${import.meta.env.VITE_IMG_URL + row[column.id]}`}
-                        alt={column.label}
-                        style={{ width: '50px', height: '50px' }}
-                      />
-                    ) : (
-                      row[column.id]
-                    )}
-                  </TableCell>
-                ))}
-                {(actions.delete || actions.view) && (
-                  <TableCell align='center'>
-                    {actions.view && onView && (
-                      <Tooltip title={t('text.view')}>
-                        <IconButton onClick={() => onView(row)}>
-                          <VisibilityIcon />
-                        </IconButton>
-                      </Tooltip>
-                    )}
-                    {actions.delete && onDelete && (
-                      <Tooltip title={t('text.delete')}>
-                        <IconButton onClick={() => onDelete(row)}>
-                          <DeleteIcon />
-                        </IconButton>
-                      </Tooltip>
-                    )}
-                  </TableCell>
-                )}
+            {data && data.length > 0 ? (
+              paginatedData.map((row, rowIndex) => (
+                <TableRow key={rowIndex}>
+                  {showIndex && (
+                    <TableCell>{page * rowsPerPage + rowIndex + 1}</TableCell>
+                  )}
+                  {columns.map((column) => (
+                    <TableCell key={column.id}>
+                      {column.type === 'image' ? (
+                        <img
+                          src={`${
+                            import.meta.env.VITE_IMG_URL + row[column.id]
+                          }`}
+                          alt={column.label}
+                          style={{ width: '50px', height: '50px' }}
+                        />
+                      ) : (
+                        row[column.id]
+                      )}
+                    </TableCell>
+                  ))}
+                  {(actions.delete || actions.view) && (
+                    <TableCell align='center'>
+                      {actions.view && onView && (
+                        <Tooltip title={t('text.view')}>
+                          <IconButton onClick={() => onView(row)}>
+                            <VisibilityIcon />
+                          </IconButton>
+                        </Tooltip>
+                      )}
+                      {actions.delete && onDelete && (
+                        <Tooltip title={t('text.delete')}>
+                          <IconButton onClick={() => onDelete(row)}>
+                            <DeleteIcon />
+                          </IconButton>
+                        </Tooltip>
+                      )}
+                    </TableCell>
+                  )}
+                </TableRow>
+              ))
+            ) : (
+              <TableRow>
+                <TableCell
+                  colSpan={
+                    columns.length +
+                    (showIndex ? 1 : 0) +
+                    (actions.delete || actions.view ? 1 : 0)
+                  }
+                  align='center'>
+                  <span className='text-xl font-semibold'>
+                    {t('text.no-data')}
+                  </span>
+                </TableCell>
               </TableRow>
-            ))}
+            )}
           </TableBody>
         </Table>
       </TableContainer>
@@ -203,7 +222,7 @@ DataTable.propTypes = {
       type: PropTypes.string,
     })
   ).isRequired,
-  data: PropTypes.arrayOf(PropTypes.object).isRequired,
+  data: PropTypes.arrayOf(PropTypes.object),
   sortable: PropTypes.bool,
   filterable: PropTypes.bool,
   actions: PropTypes.shape({

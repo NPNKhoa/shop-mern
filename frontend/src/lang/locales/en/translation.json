@@ -68,7 +68,8 @@
     "saled-price": "Saled Price",
     "available": "Available",
     "add-products": "Add Product",
-    "add-users": "Add User"
+    "add-users": "Add User",
+    "no-data": "No data"
   },
   "button": {
     "login": "Login",

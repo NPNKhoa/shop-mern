@@ -68,7 +68,8 @@
     "saled-price": "Giá khuyến mãi",
     "available": "Còn Hàng",
     "add-products": "Thêm sản phẩm",
-    "add-users": "Thêm người dùng"
+    "add-users": "Thêm người dùng",
+    "no-data": "Không có dữ liệu"
   },
   "button": {
     "login": "Đăng Nhập",

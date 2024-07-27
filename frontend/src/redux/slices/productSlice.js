@@ -51,9 +51,12 @@ const productSlice = createSlice({
       })
       .addCase(deleteProduct.fulfilled, (state, action) => {
         state.loading = false;
-        const filteredList = state.productList.filter(
-          (item) => item._id !== action.payload._id
-        );
+        let filteredList;
+        if (state.productList.length !== 0) {
+          filteredList = state.productList.filter(
+            (item) => item._id !== action.payload._id
+          );
+        }
         state.productList = filteredList;
       })
       .addCase(deleteProduct.rejected, (state, action) => {
