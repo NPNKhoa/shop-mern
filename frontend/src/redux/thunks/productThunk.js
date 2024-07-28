@@ -71,7 +71,7 @@ export const addProduct = createAsyncThunk(
         return thunkAPI.rejectWithValue('Failed to add product');
       }
 
-      const data = await response.formData();
+      const data = await response.json();
 
       if (data.error) {
         console.log(data.error);

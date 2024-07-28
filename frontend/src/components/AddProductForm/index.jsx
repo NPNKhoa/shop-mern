@@ -1,5 +1,6 @@
 import {
   Button,
+  CircularProgress,
   FormControl,
   InputLabel,
   MenuItem,
@@ -9,13 +10,15 @@ import {
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addProduct } from '../../redux/thunks/productThunk';
 
 const AddProductForm = ({ onCloseModal }) => {
   const { t } = useTranslation();
 
   const dispatch = useDispatch();
+
+  const loading = useSelector((state) => state.products.loading);
 
   const [productName, setProductName] = useState('');
   const [category, setCategory] = useState('');
@@ -38,7 +41,13 @@ const AddProductForm = ({ onCloseModal }) => {
         old_price: originalPrice,
         imageFile,
       })
-    );
+    )
+      .unwrap()
+      .then(() => onCloseModal())
+      .catch((error) => {
+        console.log(error);
+        alert(error.message || error);
+      });
   };
 
   return (
@@ -93,7 +102,6 @@ const AddProductForm = ({ onCloseModal }) => {
         <input
           id='file_input'
           className='block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50'
-          aria-describedby='file_input_help'
           onChange={(e) => handleChangeImage(e)}
           type='file'></input>
         <p
@@ -106,8 +114,9 @@ const AddProductForm = ({ onCloseModal }) => {
       <div className='flex justify-between items-center w-1/3'>
         <Button
           variant='contained'
-          onClick={() => handleAddProduct()}>
-          {t('button.save')}
+          onClick={() => handleAddProduct()}
+          disabled={loading}>
+          {loading ? <CircularProgress color='inherit' /> : t('button.save')}
         </Button>
         <Button
           variant='outlined'

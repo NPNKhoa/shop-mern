@@ -33,8 +33,6 @@ const DataTable = ({
 }) => {
   const { t } = useTranslation();
 
-  console.log(data);
-
   const [order, setOrder] = useState('asc');
   const [orderBy, setOrderBy] = useState('');
   const [filter, setFilter] = useState('');
