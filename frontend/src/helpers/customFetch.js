@@ -1,4 +1,10 @@
-export const fetchWithAuth = async (url, method, options = {}) => {
+export const fetchWithAuth = async (
+  url,
+  method,
+  headers,
+  body,
+  options = {}
+) => {
   const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
 
   if (!loggedInUser || !loggedInUser.token) {
@@ -9,20 +15,21 @@ export const fetchWithAuth = async (url, method, options = {}) => {
   }
 
   const defaultHeaders = {
-    'Content-Type': 'application/json',
     Authorization: `Bearer ${loggedInUser.token}`,
   };
 
-  const headers = { ...defaultHeaders, ...options.headers };
+  const finalHeader = { ...defaultHeaders, ...headers };
 
   const res = await fetch(url, {
     method,
-    headers,
+    headers: finalHeader,
+    body,
     ...options,
   });
 
   if (res.status === 401) {
     alert('You need to login again!');
+    localStorage.removeItem('loggedInUser');
     window.location.href = '/login';
     return await Promise.reject('Unauthorized');
   }
@@ -50,11 +57,11 @@ export const fetchByAdmin = async (
     Authorization: `Bearer ${loggedInUser.token}`,
   };
 
-  const lastHeader = { ...defaultHeaders, ...headers };
+  const finalHeader = { ...defaultHeaders, ...headers };
 
   const res = await fetch(url, {
     method,
-    headers: lastHeader,
+    headers: finalHeader,
     body,
     ...options,
   });

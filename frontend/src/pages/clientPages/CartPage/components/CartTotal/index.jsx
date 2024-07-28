@@ -1,8 +1,12 @@
 import { Divider } from '@mui/material';
 import { useTranslation } from 'react-i18next';
+import formatPrice from '../../../../../helpers/formatPrice';
+import PropTypes from 'prop-types';
 
-const CartTotal = ({ ...props }) => {
+const CartTotal = ({ total, ...props }) => {
   const { t } = useTranslation();
+
+  console.log(typeof total);
   return (
     <div {...props}>
       <h3 className='text-2xl uppercase font-medium text-sky-500 mb-6'>
@@ -11,7 +15,7 @@ const CartTotal = ({ ...props }) => {
       <div className='flex flex-col gap-4 justify-evenly'>
         <div className='flex items-center justify-between'>
           <span>{t('text.subtotal')}</span>
-          <span>$82</span>
+          <span>{formatPrice(total, 'VND')}</span>
         </div>
         <Divider sx={{ borderBottomWidth: 2 }} />
         <div className='flex items-center justify-between'>
@@ -21,11 +25,15 @@ const CartTotal = ({ ...props }) => {
         <Divider sx={{ borderBottomWidth: 2 }} />
         <div className='flex items-center justify-between font-semibold text-xl'>
           <span>{t('text.total')}</span>
-          <span>$82</span>
+          <span>{formatPrice(total, 'VND')}</span>
         </div>
       </div>
     </div>
   );
+};
+
+CartTotal.propTypes = {
+  total: PropTypes.number.isRequired,
 };
 
 export default CartTotal;

@@ -133,7 +133,7 @@ const DataTable = ({
                   )}
                 </TableCell>
               ))}
-              {(actions.delete || actions.view) && (
+              {Object.values(actions).some((value) => value) && (
                 <TableCell
                   align='center'
                   className='text-nowrap'>
@@ -166,7 +166,7 @@ const DataTable = ({
                       )}
                     </TableCell>
                   ))}
-                  {(actions.delete || actions.view) && (
+                  {Object.values(actions).some((value) => value) && (
                     <TableCell
                       align='center'
                       className='text-nowrap'>
@@ -194,7 +194,7 @@ const DataTable = ({
                   colSpan={
                     columns.length +
                     (showIndex ? 1 : 0) +
-                    (actions.delete || actions.view ? 1 : 0)
+                    (Object.values(actions).some((value) => value) ? 1 : 0)
                   }
                   align='center'>
                   <span className='text-xl font-semibold'>
