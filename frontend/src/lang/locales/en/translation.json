@@ -69,7 +69,8 @@
     "available": "Available",
     "add-products": "Add Product",
     "add-users": "Add User",
-    "no-data": "No data"
+    "no-data": "No data",
+    "my-infor": "My information"
   },
   "button": {
     "login": "Login",

@@ -17,7 +17,7 @@ const HomePage = () => {
           {t('text.women-popular')}
           <hr className='w-1/6 m-auto mt-4 border-2 border-black rounded-full' />
         </h3>
-        <ProductList />
+        <ProductList category={'women'} />
       </div>
       <ExclusiveBanner />
       <div className='py-16'>
@@ -25,7 +25,7 @@ const HomePage = () => {
           {t('text.new-collections')}
           <hr className='w-1/6 m-auto mt-4 border-2 border-black rounded-full' />
         </h3>
-        <ProductList />
+        <ProductList category={'women'} />
       </div>
       <Footer />
     </div>

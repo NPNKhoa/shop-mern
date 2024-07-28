@@ -6,6 +6,8 @@ import { CardActionArea } from '@mui/material';
 import styled from 'styled-components';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { NumericFormat } from 'react-number-format';
 
 const StyledCard = styled(Card)`
   transition: transform 0.3s ease;
@@ -14,18 +16,7 @@ const StyledCard = styled(Card)`
   }
 `;
 
-const Product = () => {
-  const product = {
-    id: 123456,
-    name: 'iPhone XS Max',
-    image: '/images/product_13.png',
-    description: 'iPhone XS Max 6GB/256GB',
-    price: '10.000.000đ',
-    discount: '5%',
-    sold: '1000+',
-    rate: '4.6',
-  };
-
+const Product = ({ product }) => {
   return (
     <StyledCard className='sm:w-2/5 md:w-1/5'>
       <Link
@@ -35,7 +26,7 @@ const Product = () => {
           <CardMedia
             component='img'
             className='w-full'
-            image={product.image}
+            image={import.meta.env.VITE_IMG_URL + product.image}
             alt={product.name}
           />
 
@@ -43,10 +34,20 @@ const Product = () => {
             <h3 className='font-bold text-2xl'>{product.name}</h3>
 
             <div className='flex justify-between items-center font-semibold text-xl'>
-              <span>{product.price}</span>
+              <NumericFormat
+                value={product.new_price}
+                displayType={'text'}
+                thousandSeparator={true}
+                suffix={'VND'}
+              />
             </div>
             <div className='flex justify-between items-center line-through text-slate-600 font-thin'>
-              <span>{product.price}</span>
+              <NumericFormat
+                value={product.old_price}
+                displayType={'text'}
+                thousandSeparator={true}
+                suffix={'VND'}
+              />
             </div>
             <Typography
               variant='body2'
@@ -64,6 +65,10 @@ const Product = () => {
       </CardActions>
     </StyledCard>
   );
+};
+
+Product.propTypes = {
+  product: PropTypes.object.isRequired,
 };
 
 export default Product;

@@ -1,6 +1,6 @@
 import Button from '@mui/material/Button';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import { Avatar, Badge, IconButton, Popover } from '@mui/material';
+import { Avatar, Badge, IconButton, Popover, Stack } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import LanguageSelector from '../LanguageSelector';
 import { Link, useNavigate } from 'react-router-dom';
@@ -89,11 +89,18 @@ const Header = () => {
                 vertical: 'bottom',
                 horizontal: 'left',
               }}>
-              <Button
-                sx={{ padding: '0.5rem 1rem' }}
-                onClick={() => handleClickLogout()}>
-                {t('button.logout')}
-              </Button>
+              <Stack>
+                <Link to={'/me'}>
+                  <Button sx={{ padding: '0.75rem 2rem' }}>
+                    {t('text.my-infor')}
+                  </Button>
+                </Link>
+                <Button
+                  sx={{ padding: '0.75rem 2rem' }}
+                  onClick={() => handleClickLogout()}>
+                  {t('button.logout')}
+                </Button>
+              </Stack>
             </Popover>
           </>
         ) : (

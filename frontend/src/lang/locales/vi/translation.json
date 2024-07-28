@@ -69,7 +69,8 @@
     "available": "Còn Hàng",
     "add-products": "Thêm sản phẩm",
     "add-users": "Thêm người dùng",
-    "no-data": "Không có dữ liệu"
+    "no-data": "Không có dữ liệu",
+    "my-infor": "Thông tin cá nhân"
   },
   "button": {
     "login": "Đăng Nhập",

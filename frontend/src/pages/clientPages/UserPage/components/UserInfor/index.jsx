@@ -1,8 +1,9 @@
 import { Paper, Stack } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 import { useTranslation } from 'react-i18next';
+import PropTypes from 'prop-types';
 
-const UserInfor = () => {
+const UserInfor = ({ user }) => {
   const { t } = useTranslation();
 
   return (
@@ -20,17 +21,17 @@ const UserInfor = () => {
           columnSpacing={{ xs: 1, md: 2 }}>
           <Grid xs={5}>{t('text.fullname')}</Grid>
           <Grid xs={7}>
-            <span className='font-semibold text-lg'>Nguyên Khoa</span>
+            <span className='font-semibold text-lg'>{user?.name}</span>
           </Grid>
 
           <Grid xs={5}>{t('text.email')}</Grid>
           <Grid xs={7}>
-            <span className='font-semibold text-lg'>khoa@gmail.com</span>
+            <span className='font-semibold text-lg'>{user?.email}</span>
           </Grid>
 
           <Grid xs={5}>{t('text.phone')}</Grid>
           <Grid xs={7}>
-            <span className='font-semibold text-lg'>0123456789</span>
+            <span className='font-semibold text-lg'>{user?.phone}</span>
           </Grid>
 
           <Grid xs={5}>{t('text.purchased')}</Grid>
@@ -41,6 +42,10 @@ const UserInfor = () => {
       </Stack>
     </Paper>
   );
+};
+
+UserInfor.propTypes = {
+  user: PropTypes.object.isRequired,
 };
 
 export default UserInfor;
