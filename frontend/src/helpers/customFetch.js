@@ -42,7 +42,7 @@ export const fetchByAdmin = async (
   if (!loggedInUser || !loggedInUser.token) {
     alert('Invalid token. You need to login again!');
     localStorage.removeItem('loggedInUser');
-    window.location.href = '/login';
+    window.location.href = '/admin/login';
     return Promise.reject('Unauthorized');
   }
 

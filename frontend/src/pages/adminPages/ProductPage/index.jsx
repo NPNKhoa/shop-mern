@@ -10,12 +10,21 @@ import {
 const AdminProductPage = () => {
   const { t } = useTranslation();
 
-  const productList = useSelector((state) => state.products.productList);
   const dispatch = useDispatch();
+
+  const productList = useSelector((state) => state.products.productList);
+  const error = useSelector((state) => state.products.error);
 
   useEffect(() => {
     dispatch(getAllProducts());
-  }, [dispatch]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    if (error) {
+      alert(error);
+    }
+  }, [error]);
 
   const columns = [
     { id: 'image', type: 'image', label: t('text.image') },

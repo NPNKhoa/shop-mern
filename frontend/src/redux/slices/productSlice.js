@@ -37,6 +37,9 @@ const productSlice = createSlice({
       })
       .addCase(addProduct.fulfilled, (state, action) => {
         state.loading = false;
+        if (!state.productList) {
+          state.productList = [];
+        }
         state.productList.push(action.payload);
       })
       .addCase(addProduct.rejected, (state, action) => {

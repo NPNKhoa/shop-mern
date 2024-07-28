@@ -33,6 +33,8 @@ const DataTable = ({
 }) => {
   const { t } = useTranslation();
 
+  console.log(data);
+
   const [order, setOrder] = useState('asc');
   const [orderBy, setOrderBy] = useState('');
   const [filter, setFilter] = useState('');
@@ -114,7 +116,9 @@ const DataTable = ({
                 </TableCell>
               )}
               {columns.map((column) => (
-                <TableCell key={column.id}>
+                <TableCell
+                  key={column.id}
+                  className='text-nowrap'>
                   {sortable ? (
                     <TableSortLabel
                       active={orderBy === column.id}
@@ -132,7 +136,9 @@ const DataTable = ({
                 </TableCell>
               ))}
               {(actions.delete || actions.view) && (
-                <TableCell align='center'>
+                <TableCell
+                  align='center'
+                  className='text-nowrap'>
                   <span className='font-semibold text-base'>
                     {t('text.actions')}
                   </span>
@@ -155,7 +161,7 @@ const DataTable = ({
                             import.meta.env.VITE_IMG_URL + row[column.id]
                           }`}
                           alt={column.label}
-                          style={{ width: '50px', height: '50px' }}
+                          style={{ width: '50px' }}
                         />
                       ) : (
                         row[column.id]
@@ -163,7 +169,9 @@ const DataTable = ({
                     </TableCell>
                   ))}
                   {(actions.delete || actions.view) && (
-                    <TableCell align='center'>
+                    <TableCell
+                      align='center'
+                      className='text-nowrap'>
                       {actions.view && onView && (
                         <Tooltip title={t('text.view')}>
                           <IconButton onClick={() => onView(row)}>

@@ -1,14 +1,34 @@
 import { useTranslation } from 'react-i18next';
-import { Button, Divider } from '@mui/material';
-import { Link } from 'react-router-dom';
+import { Button, CircularProgress, Divider } from '@mui/material';
+import { Link, useNavigate } from 'react-router-dom';
 import InventoryIcon from '@mui/icons-material/Inventory';
 import PeopleIcon from '@mui/icons-material/People';
 import LocalMallIcon from '@mui/icons-material/LocalMall';
 import LogoutIcon from '@mui/icons-material/Logout';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '../../redux/thunks/authThunk';
 
 const AdminSideBar = (props) => {
   const { t } = useTranslation();
   const currentPage = window.location.pathname.split('/').pop();
+
+  const navigate = useNavigate();
+
+  const dispatch = useDispatch();
+
+  const loading = useSelector((state) => state.auth.loading);
+  // const error = useSelector((state) => state.auth.error);
+
+  const handleLogout = () => {
+    dispatch(logout())
+      .unwrap()
+      .then(() => {
+        navigate('/admin/login');
+      })
+      .catch((err) => {
+        alert(err);
+      });
+  };
 
   return (
     <div {...props}>
@@ -51,9 +71,18 @@ const AdminSideBar = (props) => {
 
         <Divider className='w-full pb-4' />
         <div className='w-full px-4 py-6'>
-          <Button className='mx-auto w-full mt-4'>
-            {t('button.logout')}
-            <LogoutIcon className='ps-2' />
+          <Button
+            className='mx-auto w-full mt-4'
+            onClick={() => handleLogout()}
+            disabled={loading}>
+            {loading ? (
+              <CircularProgress color='inherit' />
+            ) : (
+              <>
+                {t('button.logout')}
+                <LogoutIcon className='ps-2' />
+              </>
+            )}
           </Button>
         </div>
       </div>

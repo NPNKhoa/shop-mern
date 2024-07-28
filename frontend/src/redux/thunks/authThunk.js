@@ -78,3 +78,27 @@ export const signUp = createAsyncThunk(
     }
   }
 );
+
+export const logout = createAsyncThunk(
+  'auth/logout',
+  // eslint-disable-next-line no-unused-vars
+  async (_, thunkAPI) => {
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/users/logout`
+      );
+
+      const data = await response.json();
+
+      if (data.error) {
+        console.log(data.error);
+        thunkAPI.rejectWithValue(data.error);
+      }
+
+      return null;
+    } catch (error) {
+      console.log(error);
+      thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
