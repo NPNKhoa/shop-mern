@@ -20,7 +20,7 @@ const Product = ({ product }) => {
   return (
     <StyledCard className='sm:w-2/5 md:w-1/5'>
       <Link
-        to={`/product/${product.id}`}
+        to={`/product/${product._id}`}
         className='w-full'>
         <CardActionArea>
           <CardMedia

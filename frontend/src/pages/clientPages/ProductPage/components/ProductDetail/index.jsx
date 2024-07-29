@@ -1,24 +1,39 @@
 import { Button, Rating } from '@mui/material';
-import SizeChooser from '../SizeChooser';
+// import SizeChooser from '../SizeChooser';
 import { NumberInput } from '../../../../../components';
 import CategoryList from '../CategoryList';
 import { useTranslation } from 'react-i18next';
+import PropTypes from 'prop-types';
+import formatPrice from '../../../../../helpers/formatPrice.js';
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../../../../../redux/thunks/cartThunk.js';
+import { useState } from 'react';
 
-const ProductDetail = () => {
+const ProductDetail = ({ product }) => {
   const { t } = useTranslation();
+
+  const dispatch = useDispatch();
+
+  const handleAddToCart = (productId, quantity) => {
+    console.log(productId, quantity);
+    if (!quantity || quantity === 0) {
+      return alert('Quantity must be greater than 0');
+    }
+    dispatch(addToCart({ productId, quantity }));
+  };
+
+  const [quantity, setQuantity] = useState(0);
 
   return (
     <div className='flex justify-between items-start gap-10 p-7'>
       <img
-        src='/images/product_13.png'
+        src={import.meta.env.VITE_IMG_URL + product?.image}
         alt='product_image'
         className='w-1/3'
       />
 
       <div className='w-2/3 flex flex-col justify-start items-start gap-2'>
-        <h2 className='text-5xl font-semibold'>
-          Men Green Solid Zhipperd Jacket
-        </h2>
+        <h2 className='text-5xl font-semibold'>{product?.name}</h2>
         <div className='flex justify-between items-center w-1/5'>
           <Rating
             name='read-only'
@@ -28,8 +43,12 @@ const ProductDetail = () => {
           (122)
         </div>
         <div className='flex justify-between items-center w-1/6 my-6'>
-          <span className='line-through text-slate-600'>$120</span>
-          <span className='font-medium text-red-600 text-3xl'>$100</span>
+          <span className='line-through text-slate-600'>
+            {formatPrice(product?.old_price, 'VND')}
+          </span>
+          <span className='font-medium text-red-600 text-3xl'>
+            {formatPrice(product?.new_price, 'VND')}
+          </span>
         </div>
         <p className='md:h-28 sm:h-14'>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius aliquam
@@ -37,12 +56,16 @@ const ProductDetail = () => {
           delectus, deserunt culpa consequatur, enim perferendis assumenda nisi
           tempore corporis cupiditate dolore.
         </p>
-        <SizeChooser />
+        {/* <SizeChooser /> */}
         <div className='flex justify-between items-center w-1/2 mb-2'>
-          <NumberInput />
+          <NumberInput
+            value={quantity}
+            onChange={setQuantity}
+          />
           <Button
             variant='contained'
-            className='w-1/2'>
+            className='w-1/2'
+            onClick={() => handleAddToCart(product?._id, quantity)}>
             {t('button.add-to-cart')}
           </Button>
         </div>
@@ -53,6 +76,10 @@ const ProductDetail = () => {
       </div>
     </div>
   );
+};
+
+ProductDetail.propTypes = {
+  product: PropTypes.object.isRequired,
 };
 
 export default ProductDetail;

@@ -13,6 +13,12 @@ const addToCart = async (req, res) => {
       });
     }
 
+    if (quantity <= 0) {
+      return res.status(400).json({
+        error: 'Quantity must be greater than 0',
+      });
+    }
+
     const product = await Product.findById(productId);
     if (!product) {
       return res.status(404).json({ error: 'Product not found' });
@@ -42,6 +48,10 @@ const addToCart = async (req, res) => {
 
     cart.totalCartPrice = cart.cartItems.reduce(
       (acc, item) => acc + item.totalPrice,
+      0
+    );
+    cart.totalItems = cart.cartItems.reduce(
+      (acc, item) => acc + item.quantity,
       0
     );
 

@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-import { fetchByAdmin } from '../../helpers/customFetch.js';
+import { fetchByAdmin, fetchWithAuth } from '../../helpers/customFetch.js';
 
 export const getAllProducts = createAsyncThunk(
   'products/getAllProducts',
@@ -39,6 +39,33 @@ export const getAllProducts = createAsyncThunk(
     } catch (error) {
       console.log(error);
       thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const getProductById = createAsyncThunk(
+  'products/getProductById',
+  async (productId, thunkAPI) => {
+    try {
+      if (!productId) {
+        return thunkAPI.rejectWithValue('Invalid ID');
+      }
+      const response = await fetchWithAuth(
+        `${import.meta.env.VITE_API_URL}/products/${productId}`,
+        'GET'
+      );
+
+      const data = await response.json();
+
+      if (data.error) {
+        console.log(data.error);
+        return thunkAPI.rejectWithValue(data.error);
+      }
+
+      return data.data;
+    } catch (error) {
+      console.log(error);
+      thunkAPI.rejectWithValue(error.message || error);
     }
   }
 );

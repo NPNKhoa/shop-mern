@@ -5,6 +5,8 @@ import { useTranslation } from 'react-i18next';
 import LanguageSelector from '../LanguageSelector';
 import { Link, useNavigate } from 'react-router-dom';
 import NavBar from '../NavBar';
+import stringToAvatar from '../../helpers/stringToAvatar';
+import { useSelector } from 'react-redux';
 import { useState } from 'react';
 
 const Header = () => {
@@ -12,6 +14,8 @@ const Header = () => {
   const navigate = useNavigate();
 
   const authUser = JSON.parse(localStorage.getItem('loggedInUser'));
+
+  const totalItems = useSelector((state) => state.cart.totalItems);
 
   const [anchorEl, setAnchorEl] = useState(null);
 
@@ -38,35 +42,6 @@ const Header = () => {
     navigate('/cart');
   };
 
-  function stringToColor(string) {
-    let hash = 0;
-    let i;
-
-    /* eslint-disable no-bitwise */
-    for (i = 0; i < string.length; i += 1) {
-      hash = string.charCodeAt(i) + ((hash << 5) - hash);
-    }
-
-    let color = '#';
-
-    for (i = 0; i < 3; i += 1) {
-      const value = (hash >> (i * 8)) & 0xff;
-      color += `00${value.toString(16)}`.slice(-2);
-    }
-    /* eslint-enable no-bitwise */
-
-    return color;
-  }
-
-  function stringAvatar(name) {
-    return {
-      sx: {
-        bgcolor: stringToColor(name),
-      },
-      children: `${name.split(' ')[0][0]}${name.split(' ')[1][0]}`,
-    };
-  }
-
   return (
     <div className='w-full flex justify-between items-center bg-white px-7 py-3 sticky top-0 z-50'>
       <h1 className='text-blue-600 logo text-4xl'>
@@ -78,7 +53,7 @@ const Header = () => {
           <>
             <Avatar
               className='hover:cursor-pointer'
-              {...stringAvatar(`${authUser.name}`)}
+              {...stringToAvatar(`${authUser.name}`)}
               onClick={(e) => handleClick(e)}
             />
             <Popover
@@ -117,7 +92,7 @@ const Header = () => {
         )}
         <IconButton onClick={handleClickCart}>
           <Badge
-            badgeContent={3}
+            badgeContent={totalItems}
             color='error'>
             <ShoppingCartIcon />
           </Badge>

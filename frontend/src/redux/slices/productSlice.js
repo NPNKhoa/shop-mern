@@ -3,10 +3,12 @@ import {
   addProduct,
   deleteProduct,
   getAllProducts,
+  getProductById,
 } from '../thunks/productThunk';
 
 const initialState = {
   productList: [],
+  product: {},
   loading: false,
   error: '',
 };
@@ -28,6 +30,20 @@ const productSlice = createSlice({
       .addCase(getAllProducts.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
+      });
+
+    // get by id
+    builder
+      .addCase(getProductById.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(getProductById.fulfilled, (state, action) => {
+        state.product = action.payload;
+        state.loading = false;
+      })
+      .addCase(getProductById.rejected, (state, action) => {
+        state.error = action.payload;
+        state.loading = false;
       });
 
     // Add product
