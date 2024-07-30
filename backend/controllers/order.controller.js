@@ -79,7 +79,6 @@ const getOrders = async (req, res) => {
     const userId = req.user._id;
 
     const orders = await Order.find({ user: userId });
-
     if (!orders || orders.length === 0) {
       return res.status(404).json({
         error: 'Order not found',
