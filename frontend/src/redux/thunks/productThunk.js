@@ -47,9 +47,6 @@ export const getProductById = createAsyncThunk(
   'products/getProductById',
   async (productId, thunkAPI) => {
     try {
-      if (!productId) {
-        return thunkAPI.rejectWithValue('Invalid ID');
-      }
       const response = await fetchWithAuth(
         `${import.meta.env.VITE_API_URL}/products/${productId}`,
         'GET'
@@ -62,6 +59,7 @@ export const getProductById = createAsyncThunk(
         return thunkAPI.rejectWithValue(data.error);
       }
 
+      console.log(data.data);
       return data.data;
     } catch (error) {
       console.log(error);

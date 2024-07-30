@@ -70,7 +70,8 @@
     "add-products": "Add Product",
     "add-users": "Add User",
     "no-data": "No data",
-    "my-infor": "My information"
+    "my-infor": "My information",
+    "product-detail": "Product detail"
   },
   "button": {
     "login": "Login",
@@ -84,7 +85,8 @@
     "order": "Order",
     "add": "Add",
     "save": "Save",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "remove": "Remove"
   },
   "link": {
     "create-account": "Create an account",

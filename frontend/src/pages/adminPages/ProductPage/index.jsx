@@ -1,11 +1,12 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { DataTable } from '../../../components';
 import { useTranslation } from 'react-i18next';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import {
   deleteProduct,
   getAllProducts,
 } from '../../../redux/thunks/productThunk';
+import ViewProductModal from './components/ViewProductModal';
 
 const AdminProductPage = () => {
   const { t } = useTranslation();
@@ -13,18 +14,14 @@ const AdminProductPage = () => {
   const dispatch = useDispatch();
 
   const productList = useSelector((state) => state.products.productList);
-  const error = useSelector((state) => state.products.error);
+
+  const [open, setOpen] = useState(false);
+  const [productId, setProductId] = useState('');
 
   useEffect(() => {
     dispatch(getAllProducts());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  useEffect(() => {
-    if (error) {
-      alert(error);
-    }
-  }, [error]);
 
   const columns = [
     { id: 'image', type: 'image', label: t('text.image') },
@@ -40,6 +37,13 @@ const AdminProductPage = () => {
 
   const handleViewProduct = (product) => {
     console.log('view product: ', product._id);
+    setProductId(product._id);
+    setOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setOpen(false);
+    setProductId('');
   };
 
   return (
@@ -56,6 +60,13 @@ const AdminProductPage = () => {
         onDelete={handleDeleteProduct}
         onView={handleViewProduct}
       />
+      {productId && (
+        <ViewProductModal
+          open={open}
+          onClose={handleCloseModal}
+          productId={productId}
+        />
+      )}
     </div>
   );
 };
