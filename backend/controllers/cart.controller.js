@@ -105,7 +105,8 @@ const removeFromCart = async (req, res) => {
     await cart.save();
 
     res.status(200).json({
-      data: cart,
+      cart,
+      deletedItem: product,
       error: false,
     });
   } catch (error) {

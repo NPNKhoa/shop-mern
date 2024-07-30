@@ -1,4 +1,4 @@
-import { Button, Rating } from '@mui/material';
+import { Button } from '@mui/material';
 // import SizeChooser from '../SizeChooser';
 import { NumberInput } from '../../../../../components';
 import CategoryList from '../CategoryList';
@@ -13,6 +13,11 @@ const ProductDetail = ({ product }) => {
   const { t } = useTranslation();
 
   const dispatch = useDispatch();
+
+  const categorySet = new Set();
+  categorySet.add(product?.category);
+
+  const categoryList = [...categorySet]; // Convert Set to Array
 
   const handleAddToCart = (productId, quantity) => {
     console.log(productId, quantity);
@@ -34,18 +39,11 @@ const ProductDetail = ({ product }) => {
 
       <div className='w-2/3 flex flex-col justify-start items-start gap-2'>
         <h2 className='text-5xl font-semibold'>{product?.name}</h2>
-        <div className='flex justify-between items-center w-1/5'>
-          <Rating
-            name='read-only'
-            value={4}
-            readOnly
-          />{' '}
-          (122)
-        </div>
-        <div className='flex justify-between items-center w-1/6 my-6'>
+
+        <div className='flex flex-col justify-between items-start gap-1 w-1/6 my-6'>
           <span className='line-through text-slate-600'>
             {formatPrice(product?.old_price, 'VND')}
-          </span>
+          </span>{' '}
           <span className='font-medium text-red-600 text-3xl'>
             {formatPrice(product?.new_price, 'VND')}
           </span>
@@ -71,7 +69,7 @@ const ProductDetail = ({ product }) => {
         </div>
         <div className='flex justify-start items-center gap-2'>
           <span className='font-semibold'>{t('text.category')}:</span>
-          <CategoryList />
+          <CategoryList categoryList={categoryList} />
         </div>
       </div>
     </div>

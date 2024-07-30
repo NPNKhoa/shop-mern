@@ -52,3 +52,28 @@ export const addToCart = createAsyncThunk(
     }
   }
 );
+
+export const removeFromCart = createAsyncThunk(
+  'cart/removeFromCart',
+  async (productId, thunkAPI) => {
+    try {
+      const response = await fetchWithAuth(
+        `${import.meta.env.VITE_API_URL}/cart/remove`,
+        'DELETE',
+        { 'Content-Type': 'application/json' },
+        JSON.stringify({ productId })
+      );
+
+      const data = await response.json();
+
+      if (data.error) {
+        return thunkAPI.rejectWithValue(data.error);
+      }
+
+      return data;
+    } catch (error) {
+      console.log(error);
+      thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

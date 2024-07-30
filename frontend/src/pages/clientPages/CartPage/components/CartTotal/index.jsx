@@ -6,7 +6,6 @@ import PropTypes from 'prop-types';
 const CartTotal = ({ total, ...props }) => {
   const { t } = useTranslation();
 
-  console.log(typeof total);
   return (
     <div {...props}>
       <h3 className='text-2xl uppercase font-medium text-sky-500 mb-6'>

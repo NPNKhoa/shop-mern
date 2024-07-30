@@ -6,7 +6,7 @@ import Button from '@mui/material/Button';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { getCart } from '../../../redux/thunks/cartThunk.js';
+import { getCart, removeFromCart } from '../../../redux/thunks/cartThunk.js';
 import formatPrice from '../../../helpers/formatPrice.js';
 
 const CartPage = () => {
@@ -31,9 +31,6 @@ const CartPage = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  console.log(cart);
-  console.log(cartItems);
-
   const data = cartItems.map((item) => ({
     id: item.product._id,
     product: item.product.image,
@@ -44,7 +41,7 @@ const CartPage = () => {
   }));
 
   const handleDeleteItem = (product) => {
-    console.log('deleted ', product.id);
+    dispatch(removeFromCart(product.id));
   };
 
   return (

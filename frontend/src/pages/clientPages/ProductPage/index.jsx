@@ -1,7 +1,7 @@
 import { CustomBreadcrumbs } from '../../../components';
 import { useParams } from 'react-router-dom';
 import ProductDetail from './components/ProductDetail';
-import ProductDescription from './components/ProductDescription';
+// import ProductDescription from './components/ProductDescription';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { getProductById } from '../../../redux/thunks/productThunk';
@@ -30,7 +30,7 @@ const ProductPage = () => {
 
       <ProductDetail product={product} />
 
-      <ProductDescription />
+      {/* <ProductDescription /> */}
     </div>
   );
 };
