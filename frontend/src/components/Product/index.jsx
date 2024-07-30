@@ -1,10 +1,9 @@
-import { Card, CardActions, IconButton } from '@mui/material';
+import { Card } from '@mui/material';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 import styled from 'styled-components';
-import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { NumericFormat } from 'react-number-format';
@@ -31,7 +30,9 @@ const Product = ({ product }) => {
           />
 
           <CardContent sx={{ padding: '12px' }}>
-            <h3 className='font-bold text-2xl'>{product.name}</h3>
+            <h3 className='font-bold text-2xl truncate overflow-hidden whitespace-nowrap'>
+              {product.name}
+            </h3>
 
             <div className='flex justify-between items-center font-semibold text-xl'>
               <NumericFormat
@@ -57,12 +58,6 @@ const Product = ({ product }) => {
           </CardContent>
         </CardActionArea>
       </Link>
-
-      <CardActions sx={{ padding: '0' }}>
-        <IconButton>
-          <AddShoppingCartIcon />
-        </IconButton>
-      </CardActions>
     </StyledCard>
   );
 };

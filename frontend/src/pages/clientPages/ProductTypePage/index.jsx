@@ -1,4 +1,4 @@
-import { Pagination } from '@mui/material';
+// import { Pagination } from '@mui/material';
 import { useParams } from 'react-router-dom';
 import { ProductList } from '../../../components';
 
@@ -13,10 +13,10 @@ const ProductTypePage = () => {
         className='mb-12'
       />
       <ProductList category={type} />
-      <Pagination
+      {/* <Pagination
         count={10}
         className='py-4'
-      />
+      /> */}
     </div>
   );
 };

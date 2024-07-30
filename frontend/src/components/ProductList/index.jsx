@@ -13,7 +13,7 @@ const ProductList = ({ category }) => {
   }, [category, dispatch]);
 
   return (
-    <div className='flex justify-around items-center gap-8 flex-wrap'>
+    <div className='flex justify-around items-center gap-8 flex-wrap w-full'>
       {productList.map((product) => (
         <Product
           key={product._id}
