@@ -94,6 +94,33 @@ const getOrders = async (req, res) => {
   }
 };
 
+const getOrderById = async (req, res) => {
+  try {
+    const { id: orderId } = req.params;
+
+    if (!orderId) {
+      return res.status(400).json({
+        error: 'Missing ID',
+      });
+    }
+
+    const order = await Order.findById(orderId).populate('orderItems.product');
+
+    if (!order) {
+      return res.status(404).json({
+        error: 'Order not found',
+      });
+    }
+
+    res.status(200).json({
+      data: order,
+      error: false,
+    });
+  } catch (error) {
+    logError(error, res);
+  }
+};
+
 const getOrdersByAdmin = async (req, res) => {
   try {
     const orders = await Order.find();
@@ -154,4 +181,10 @@ const updateOrderStatus = async (req, res) => {
   }
 };
 
-export { createOrder, getOrders, getOrdersByAdmin, updateOrderStatus };
+export {
+  createOrder,
+  getOrders,
+  getOrderById,
+  getOrdersByAdmin,
+  updateOrderStatus,
+};

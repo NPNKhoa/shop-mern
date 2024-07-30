@@ -52,3 +52,27 @@ export const getOrders = createAsyncThunk(
     }
   }
 );
+
+export const getOrderById = createAsyncThunk(
+  'orders/getOrderById',
+  async (orderId, thunkAPI) => {
+    try {
+      const response = await fetchWithAuth(
+        `${import.meta.env.VITE_API_URL}/orders/${orderId}`,
+        'GET'
+      );
+
+      const data = await response.json();
+
+      if (data.error) {
+        console.log(data.error);
+        return thunkAPI.rejectWithValue(data.error);
+      }
+
+      return data.data;
+    } catch (error) {
+      console.log(error);
+      thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

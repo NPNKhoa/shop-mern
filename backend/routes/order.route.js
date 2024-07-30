@@ -1,6 +1,7 @@
 import express from 'express';
 import {
   createOrder,
+  getOrderById,
   getOrders,
   getOrdersByAdmin,
   updateOrderStatus,
@@ -10,6 +11,8 @@ import { auth, isAdmin } from '../middlewares/authentication.js';
 const router = express.Router();
 
 router.get('/', auth, getOrders);
+
+router.get('/:id', auth, getOrderById);
 
 router.get('/admin', auth, isAdmin, getOrdersByAdmin);
 

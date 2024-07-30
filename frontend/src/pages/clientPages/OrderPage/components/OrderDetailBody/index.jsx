@@ -6,21 +6,28 @@ import {
   TableRow,
 } from '@mui/material';
 import { useTranslation } from 'react-i18next';
+import PropTypes from 'prop-types';
+import formatPrice from '../../../../../helpers/formatPrice';
 
-function createData(name, calories, fat, carbs, protein) {
-  return { name, calories, fat, carbs, protein };
-}
-
-const rows = [
-  createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-  createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-  createData('Eclair', 262, 16.0, 24, 6.0),
-  createData('Cupcake', 305, 3.7, 67, 4.3),
-  createData('Gingerbread', 356, 16.0, 49, 3.9),
-];
-
-const OrderDetailBody = () => {
+const OrderDetailBody = ({ order }) => {
   const { t } = useTranslation();
+
+  console.log(order);
+
+  const createData = (name, price, quantity, totalPrice) => {
+    return { name, price, quantity, totalPrice };
+  };
+
+  const rows = order?.orderItems?.map((item) =>
+    createData(
+      item?.product?.name,
+      item?.product?.new_price,
+      item?.quantity,
+      item?.totalPrice
+    )
+  );
+
+  console.log(rows);
 
   return (
     <div className='my-6'>
@@ -30,11 +37,6 @@ const OrderDetailBody = () => {
         aria-label='simple table'>
         <TableHead>
           <TableRow>
-            <TableCell
-              sx={{ fontWeight: '600' }}
-              align='center'>
-              {t('text.product')}
-            </TableCell>
             <TableCell
               sx={{ fontWeight: '600' }}
               align='left'>
@@ -57,14 +59,18 @@ const OrderDetailBody = () => {
             </TableCell>
           </TableRow>
         </TableHead>
+
         <TableBody>
-          {rows.map((row) => (
-            <TableRow key={row.name}>
-              <TableCell align='center'>{row.calories}</TableCell>
-              <TableCell align='left'>{row.name}</TableCell>
-              <TableCell align='center'>{row.fat}</TableCell>
-              <TableCell align='center'>{row.carbs}</TableCell>
-              <TableCell align='center'>{row.protein}</TableCell>
+          {rows?.map((row) => (
+            <TableRow key={row?.name}>
+              <TableCell align='left'>{row?.name}</TableCell>
+              <TableCell align='center'>
+                {formatPrice(row?.price, 'VND')}
+              </TableCell>
+              <TableCell align='center'>{row?.quantity}</TableCell>
+              <TableCell align='center'>
+                {formatPrice(row?.totalPrice, 'VND')}
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>
@@ -72,10 +78,16 @@ const OrderDetailBody = () => {
 
       <div>
         <span className='text-lg font-medium'>{t('text.order-total')}: </span>
-        <span className='text-2xl font-semibold'>20.000.000VND</span>
+        <span className='text-2xl font-semibold'>
+          {formatPrice(order?.totalPrice, 'VND')}
+        </span>
       </div>
     </div>
   );
+};
+
+OrderDetailBody.propTypes = {
+  order: PropTypes.object.isRequired,
 };
 
 export default OrderDetailBody;
