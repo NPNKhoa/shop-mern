@@ -71,7 +71,8 @@
     "add-users": "Add User",
     "no-data": "No data",
     "my-infor": "My information",
-    "product-detail": "Product detail"
+    "product-detail": "Product detail",
+    "admin": "Admin"
   },
   "button": {
     "login": "Login",

@@ -14,7 +14,7 @@ export const getAllUsers = createAsyncThunk(
       }).toString();
 
       const response = await fetchWithAuth(
-        `${import.meta.env.API_URL}/users?${query}`,
+        `${import.meta.env.VITE_API_URL}/users?${query}`,
         'GET'
       );
 
@@ -26,7 +26,7 @@ export const getAllUsers = createAsyncThunk(
         return thunkAPI.rejectWithValue(data.error);
       }
 
-      return data;
+      return data.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

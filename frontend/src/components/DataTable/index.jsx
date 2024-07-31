@@ -18,6 +18,7 @@ import {
 } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import VisibilityIcon from '@mui/icons-material/Visibility';
+import CheckIcon from '@mui/icons-material/Check'; // Import check icon
 
 const DataTable = ({
   title,
@@ -145,7 +146,7 @@ const DataTable = ({
             </TableRow>
           </TableHead>
           <TableBody>
-            {data && data.length > 0 ? (
+            {paginatedData.length > 0 ? (
               paginatedData.map((row, rowIndex) => (
                 <TableRow key={rowIndex}>
                   {showIndex && (
@@ -153,7 +154,16 @@ const DataTable = ({
                   )}
                   {columns.map((column) => (
                     <TableCell key={column.id}>
-                      {column.type === 'image' ? (
+                      {column.type === 'boolean' ? (
+                        row[column.id] ? (
+                          <CheckIcon
+                            className='ms-auto'
+                            color='success'
+                          />
+                        ) : (
+                          ''
+                        )
+                      ) : column.type === 'image' ? (
                         <img
                           src={`${
                             import.meta.env.VITE_IMG_URL + row[column.id]
@@ -173,14 +183,14 @@ const DataTable = ({
                       {actions.view && onView && (
                         <Tooltip title={t('text.view')}>
                           <IconButton onClick={() => onView(row)}>
-                            <VisibilityIcon />
+                            <VisibilityIcon color='info' />
                           </IconButton>
                         </Tooltip>
                       )}
                       {actions.delete && onDelete && (
                         <Tooltip title={t('text.delete')}>
                           <IconButton onClick={() => onDelete(row)}>
-                            <DeleteIcon />
+                            <DeleteIcon color='info' />
                           </IconButton>
                         </Tooltip>
                       )}
