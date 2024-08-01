@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { fetchWithAuth } from '../../helpers/customFetch';
+import { fetchByAdmin, fetchWithAuth } from '../../helpers/customFetch';
 
 export const createOrder = createAsyncThunk(
   'orders/createOrder',
@@ -53,6 +53,29 @@ export const getOrders = createAsyncThunk(
   }
 );
 
+export const getOrdersByAdmin = createAsyncThunk(
+  'orders/getOrdersByAdmin',
+  async (_, thunkAPI) => {
+    try {
+      const response = await fetchByAdmin(
+        `${import.meta.env.VITE_API_URL}/orders/admin`,
+        'GET'
+      );
+
+      const data = await response.json();
+
+      if (data.error) {
+        return thunkAPI.rejectWithValue(data.error);
+      }
+
+      return data.data;
+    } catch (error) {
+      console.log(error);
+      thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
 export const getOrderById = createAsyncThunk(
   'orders/getOrderById',
   async (orderId, thunkAPI) => {
@@ -66,6 +89,33 @@ export const getOrderById = createAsyncThunk(
 
       if (data.error) {
         console.log(data.error);
+        return thunkAPI.rejectWithValue(data.error);
+      }
+
+      return data.data;
+    } catch (error) {
+      console.log(error);
+      thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const updateOrderStatus = createAsyncThunk(
+  'orders/updateOrderStatus',
+  async (params, thunkAPI) => {
+    try {
+      const { orderId, isPaid = false, isDelivered = false } = params;
+
+      const response = await fetchByAdmin(
+        `${import.meta.env.VITE_API_URL}/orders/${orderId}`,
+        'PUT',
+        { 'Content-Type': 'application/json' },
+        JSON.stringify({ isPaid, isDelivered })
+      );
+
+      const data = await response.json();
+
+      if (data.error) {
         return thunkAPI.rejectWithValue(data.error);
       }
 

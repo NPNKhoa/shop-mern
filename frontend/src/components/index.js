@@ -10,6 +10,7 @@ import NumberInput from './NumberInput';
 import DataTable from './DataTable';
 import AdminSideBar from './AdminSideBar';
 import AdminHeader from './AdminHeader';
+import ConfirmationDialog from './ConfirmationDialog';
 
 export {
   Header,
@@ -24,4 +25,5 @@ export {
   DataTable,
   AdminSideBar,
   AdminHeader,
+  ConfirmationDialog,
 };

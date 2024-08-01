@@ -72,7 +72,18 @@
     "no-data": "No data",
     "my-infor": "My information",
     "product-detail": "Product detail",
-    "admin": "Admin"
+    "admin": "Admin",
+    "shipping-infor": "Shipping address",
+    "buyer": "Buyer",
+    "paid-at": "Paid at",
+    "delivered-at": "Delivered at",
+    "payment-status": "Payment status",
+    "delivery-status": "Delivery status",
+    "purchased-product": "Purchased products",
+    "update-payment-status-title": "Update payment status",
+    "update-delivery-status-title": "Update delivery status",
+    "update-payment-status-content": "Are you sure to make this order is paid at",
+    "update-delivery-status-content": "Are you sure to make this order is delivered at"
   },
   "button": {
     "login": "Login",
@@ -87,7 +98,9 @@
     "add": "Add",
     "save": "Save",
     "cancel": "Cancel",
-    "remove": "Remove"
+    "remove": "Remove",
+    "update": "Update",
+    "accept": "Accept"
   },
   "link": {
     "create-account": "Create an account",

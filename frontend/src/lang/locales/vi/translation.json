@@ -72,7 +72,18 @@
     "no-data": "Không có dữ liệu",
     "my-infor": "Thông tin cá nhân",
     "product-detail": "Chi tiết sản phẩm",
-    "admin": "Quản trị viên"
+    "admin": "Quản trị viên",
+    "shipping-infor": "Thông tin giao hàng",
+    "buyer": "Người mua",
+    "paid-at": "Thanh toán lúc",
+    "delivered-at": "Đã giao lúc",
+    "payment-status": "Trạng thái thanh toán",
+    "delivery-status": "Trạng thái giao hàng",
+    "purchased-product": "Sản phẩm đã mua",
+    "update-payment-status-title": "Cập nhật trạng thái thanh toán",
+    "update-delivery-status-title": "Cập nhật trạng thái giao hàng",
+    "update-payment-status-content": "Bạn có chắc muốn cập nhật trạng thái đơn hàng này là đã thanh toán lúc",
+    "update-delivery-status-content": "Bạn có chắc muốn cập nhật trạng thái đơn hàng này là đã giao lúc"
   },
   "button": {
     "login": "Đăng Nhập",
@@ -87,7 +98,9 @@
     "add": "Thêm",
     "save": "Lưu",
     "cancel": "Hủy",
-    "remove": "Xóa"
+    "remove": "Xóa",
+    "update": "Cập nhật",
+    "accept": "Đồng ý"
   },
   "link": {
     "create-account": "Tạo tài khoản",

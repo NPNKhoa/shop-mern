@@ -12,9 +12,9 @@ const router = express.Router();
 
 router.get('/', auth, getOrders);
 
-router.get('/:id', auth, getOrderById);
-
 router.get('/admin', auth, isAdmin, getOrdersByAdmin);
+
+router.get('/:id', auth, getOrderById);
 
 router.post('/', auth, createOrder);
 

@@ -104,7 +104,9 @@ const getOrderById = async (req, res) => {
       });
     }
 
-    const order = await Order.findById(orderId).populate('orderItems.product');
+    const order = await Order.findById(orderId)
+      .populate('orderItems.product')
+      .populate('user');
 
     if (!order) {
       return res.status(404).json({
@@ -123,7 +125,7 @@ const getOrderById = async (req, res) => {
 
 const getOrdersByAdmin = async (req, res) => {
   try {
-    const orders = await Order.find();
+    const orders = await Order.find().populate('user');
 
     if (!orders || orders.length === 0) {
       return res.status(404).json({

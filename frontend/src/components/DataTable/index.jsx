@@ -18,7 +18,8 @@ import {
 } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import VisibilityIcon from '@mui/icons-material/Visibility';
-import CheckIcon from '@mui/icons-material/Check'; // Import check icon
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import CancelIcon from '@mui/icons-material/Cancel';
 
 const DataTable = ({
   title,
@@ -110,12 +111,13 @@ const DataTable = ({
           <TableHead>
             <TableRow className='bg-sky-100'>
               {showIndex && (
-                <TableCell>
+                <TableCell align='center'>
                   <span className='font-semibold text-base'>#</span>
                 </TableCell>
               )}
               {columns.map((column) => (
                 <TableCell
+                  align={column.type === 'text' ? 'left' : 'center'}
                   key={column.id}
                   className='text-nowrap'>
                   {sortable ? (
@@ -153,15 +155,14 @@ const DataTable = ({
                     <TableCell>{page * rowsPerPage + rowIndex + 1}</TableCell>
                   )}
                   {columns.map((column) => (
-                    <TableCell key={column.id}>
+                    <TableCell
+                      align={column.type === 'text' ? 'left' : 'center'}
+                      key={column.id}>
                       {column.type === 'boolean' ? (
                         row[column.id] ? (
-                          <CheckIcon
-                            className='ms-auto'
-                            color='success'
-                          />
+                          <CheckCircleIcon color='success' />
                         ) : (
-                          ''
+                          <CancelIcon color='error' />
                         )
                       ) : column.type === 'image' ? (
                         <img

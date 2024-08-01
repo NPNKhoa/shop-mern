@@ -23,16 +23,6 @@ const AdminUserPage = () => {
     // { id: 'isAdmin', type: 'boolean', label: t('text.admin') },
   ];
 
-  const handleViewUser = (user) => {
-    console.log('view user' + user._id);
-  };
-
-  const handleDeleteUser = (user) => {
-    console.log('delete user' + user._id);
-  };
-
-  console.log(users);
-
   return (
     <div>
       <DataTable
@@ -44,8 +34,6 @@ const AdminUserPage = () => {
         actions={{ delete: false, view: false }}
         pagination={{ rowsPerPageOptions: [4, 8, 12], defaultRowsPerPage: 4 }}
         showIndex={true}
-        onDelete={handleDeleteUser}
-        onView={handleViewUser}
       />
     </div>
   );
